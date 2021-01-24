@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 
 namespace Quartzmin
 {
     public class ViewEngine
     {
         readonly Services _services;
-        readonly Dictionary<string, Func<object, string>> _compiledViews = new Dictionary<string, Func<object, string>>(StringComparer.OrdinalIgnoreCase);
+        readonly Dictionary<string, HandlebarsDotNet.HandlebarsTemplate<object, object>> _compiledViews = new Dictionary<string, HandlebarsDotNet.HandlebarsTemplate<object, object>>(StringComparer.OrdinalIgnoreCase);
 
         public bool UseCache { get; set; }
 
@@ -17,7 +18,7 @@ namespace Quartzmin
             UseCache = string.IsNullOrEmpty(services.Options.ViewsRootDirectory);
         }
 
-        Func<object, string> GetRenderDelegate(string templatePath)
+        HandlebarsDotNet.HandlebarsTemplate<object, object> GetRenderDelegate(string templatePath)
         {
             if (UseCache)
             {
@@ -37,14 +38,14 @@ namespace Quartzmin
             }
         }
 
-        public string Render(string templatePath, object model)
-        {
-            return GetRenderDelegate(templatePath)(model);
+        public string Render(string templatePath, object model) {
+	        string render = GetRenderDelegate(templatePath)(model);
+	        return render;
         }
 
-        public string Encode(object value)
+        public void Encode(object value, TextWriter target)
         {
-            return _services.Handlebars.Configuration.TextEncoder.Encode(string.Format(CultureInfo.InvariantCulture, "{0}", value));
+            _services.Handlebars.Configuration.TextEncoder.Encode(string.Format(CultureInfo.InvariantCulture, "{0}", value), target);
         }
 
         public string ErrorPage(Exception ex)

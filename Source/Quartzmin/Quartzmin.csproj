@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -37,9 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Handlebars.Net" Version="1.9.5" />
-    <PackageReference Include="JsonSubTypes" Version="1.5.1" />
-    <PackageReference Include="Quartz" Version="3.0.7" />
+    <PackageReference Include="Handlebars.Net" Version="2.0.4" />
+    <PackageReference Include="JsonSubTypes" Version="1.8.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Owin.StaticFiles" Version="4.1.1" />
+    <PackageReference Include="Quartz" Version="3.2.4" />
   </ItemGroup>
   
   <ItemGroup Condition="$(DefineConstants.Contains('NETFRAMEWORK'))">
@@ -51,13 +54,13 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(DefineConstants.Contains('NETSTANDARD'))">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

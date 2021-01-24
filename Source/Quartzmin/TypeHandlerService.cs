@@ -46,7 +46,7 @@ namespace Quartzmin
 
             public string TypeId { get; set; }
 
-            public Func<object, string> Render { get; set; }
+            public HandlebarsDotNet.HandlebarsTemplate<object, object> Render { get; set; }
 
             public TypeHandlerResourcesAttribute Resources { get; set; }
         }

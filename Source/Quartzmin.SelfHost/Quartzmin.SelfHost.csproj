@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -42,9 +42,9 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(DefineConstants.Contains('NETSTANDARD'))">
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +53,12 @@
 
   <ItemGroup>
     <None Remove="*.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.OwinSelfHost" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="4.1.1" />
+    <PackageReference Include="Microsoft.Owin.Hosting" Version="4.1.1" />
   </ItemGroup>
 
 </Project>
